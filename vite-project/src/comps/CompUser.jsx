@@ -8,21 +8,21 @@ function CompUser() {
     isActive: true,
   });
 
-  const ChangeName = () => {
+  const handleClickChangeName = () => {
     setUser((user) => ({
       ...user,
       name: "Alex",
     }));
   };
 
-  const IncreaseAge = () => {
+  const handleClickIncreaseAge = () => {
     setUser((user) => ({
       ...user,
       age: user.age++,
     }));
   };
 
-  const ChangeIsActive = () => {
+  const handleClickChangeActivity = () => {
     setUser((user) => ({
       ...user,
       isActive: !user.isActive,
@@ -35,9 +35,11 @@ function CompUser() {
       <p>{`Возраст: ${user.age}`}</p>
       <p>{`Активен: ${user.isActive}`}</p>
       <div class="UserButtons">
-        <button onClick={ChangeName}>Сменить имя</button>
-        <button onClick={IncreaseAge}>Увеличить возраст</button>
-        <button onClick={ChangeIsActive}>Переключить активность</button>
+        <button onClick={handleClickChangeName}>Сменить имя</button>
+        <button onClick={handleClickIncreaseAge}>Увеличить возраст</button>
+        <button onClick={handleClickChangeActivity}>
+          Переключить активность
+        </button>
       </div>
     </div>
   );

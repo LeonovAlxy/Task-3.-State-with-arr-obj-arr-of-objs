@@ -6,13 +6,13 @@ function CompTasks() {
 
   const tasksList = tasks.map((item) => <li>{item}</li>);
 
-  const AddTask = () => {
+  const handleClickAddTask = () => {
     const setTasksCopy = [...tasks];
     setTasksCopy.push("random_task");
     setTasks(setTasksCopy);
   };
 
-  const RemoveLastTask = () => {
+  const handleClickRemoveLastTask = () => {
     const setTasksCopy = [...tasks];
     setTasksCopy.pop();
     setTasks(setTasksCopy);
@@ -24,8 +24,10 @@ function CompTasks() {
         {tasksList}
       </ul>
       <div class="TasksButtons">
-        <button onClick={AddTask}>Добавить задачу</button>
-        <button onClick={RemoveLastTask}>Удалить последнюю задачу</button>
+        <button onClick={handleClickAddTask}>Добавить задачу</button>
+        <button onClick={handleClickRemoveLastTask}>
+          Удалить последнюю задачу
+        </button>
       </div>
     </div>
   );
