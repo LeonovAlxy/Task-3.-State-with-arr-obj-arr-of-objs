@@ -6,7 +6,7 @@ function CompCart() {
     { id: 1, title: "Футболка", count: 1 },
     { id: 2, title: "Кепка", count: 2 },
   ]);
-  const handleClickCartCleanUp = () => setCart((cart) => (cart = []));
+  const handleClickCartCleanUp = () => setCart([]);
   const cartList = cart.map((cartItem, cartIndex) => {
     return (
       <div class="CartItem">
