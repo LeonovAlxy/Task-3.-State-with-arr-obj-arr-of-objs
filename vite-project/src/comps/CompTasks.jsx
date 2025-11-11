@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { memo } from "react";
 import "../App";
 
-function CompTasks() {
-  const [tasks, setTasks] = useState(["Купить хлеб", "Погулять с собакой"]);
-
-  const tasksList = tasks.map((item) => <li>{item}</li>);
+function CompTasks({ tasks, setTasks }) {
+  const tasksList = tasks.map((item) => <li key={`${item}`}>{item}</li>);
 
   const handleClickAddTask = () => {
     const setTasksCopy = [...tasks];
@@ -17,13 +15,14 @@ function CompTasks() {
     setTasksCopy.pop();
     setTasks(setTasksCopy);
   };
+  console.log("Tasks", tasks);
   return (
-    <div class="Card" name="TasksCard">
+    <div className="Card" name="TasksCard">
       <ul>
         <h3>Список задач</h3>
         {tasksList}
       </ul>
-      <div class="TasksButtons">
+      <div className="TasksButtons">
         <button onClick={handleClickAddTask}>Добавить задачу</button>
         <button onClick={handleClickRemoveLastTask}>
           Удалить последнюю задачу
@@ -32,4 +31,4 @@ function CompTasks() {
     </div>
   );
 }
-export default CompTasks;
+export default memo(CompTasks);

@@ -1,48 +1,41 @@
-import { useState } from "react";
+import { memo } from "react";
 import "./Card.css";
 
-function CompUser() {
-  const [user, setUser] = useState({
-    name: "Иван",
-    age: 25,
-    isActive: true,
-  });
-
-  const handleClickChangeName = () => {
+function CompUser({ user, setUser }) {
+  const handleClickName = () => {
     setUser((user) => ({
       ...user,
       name: "Alex",
     }));
   };
 
-  const handleClickIncreaseAge = () => {
+  const handleClickAge = () => {
     setUser((user) => ({
       ...user,
-      age: user.age++,
+      age: ++user.age,
     }));
   };
 
-  const handleClickChangeActivity = () => {
+  const handleClickActivity = () => {
     setUser((user) => ({
       ...user,
       isActive: !user.isActive,
     }));
   };
+  console.log("usercomp", user);
   return (
-    <div class="Card" name="UserInfoCard">
+    <div className="Card" name="UserInfoCard">
       <h3>Профиль пользователя</h3>
-      <p>{`Имя: ${user.name}`}</p>
-      <p>{`Возраст: ${user.age}`}</p>
-      <p>{`Активен: ${user.isActive}`}</p>
-      <div class="UserButtons">
-        <button onClick={handleClickChangeName}>Сменить имя</button>
-        <button onClick={handleClickIncreaseAge}>Увеличить возраст</button>
-        <button onClick={handleClickChangeActivity}>
-          Переключить активность
-        </button>
+      <p>Имя: {user.name}</p>
+      <p>Возраст: {user.age}</p>
+      <p>Активен: {user.isActive.toString()}</p>
+      <div className="UserButtons">
+        <button onClick={handleClickName}>Сменить имя</button>
+        <button onClick={handleClickAge}>Увеличить возраст</button>
+        <button onClick={handleClickActivity}>Переключить активность</button>
       </div>
     </div>
   );
 }
 
-export default CompUser;
+export default memo(CompUser);
