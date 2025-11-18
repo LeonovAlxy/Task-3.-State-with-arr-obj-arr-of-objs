@@ -3,10 +3,10 @@ import "./App.css";
 import CompUser from "./comps/CompUser";
 import CompTasks from "./comps/CompTasks";
 import CompCart from "./comps/CompCart";
-import { GlobalStyles } from "./GlobalStyles";
-import { lightTheme, darkTheme } from "./Theme";
+import { GlobalStyles } from "./comps/darkTheme/GlobalStyles";
+import { lightTheme, darkTheme } from "./comps/darkTheme/Themes";
 import { ThemeProvider } from "styled-components";
-import Toggle from "./Toggler";
+import Toggler from "./comps/darkTheme/Toggler";
 
 function App() {
   const [tasks, setTasks] = useState(["Купить хлеб", "Погулять с собакой"]);
@@ -30,13 +30,13 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <>
+      <div>
         <GlobalStyles />
-        <Toggle theme={theme} toggleTheme={themeToggler} />
+        <Toggler theme={theme} toggleTheme={themeToggler} />
         <CompUser user={user} setUser={setUser} />
         <CompTasks tasks={tasks} setTasks={setTasks} />
         <CompCart cart={cart} setCart={setCart} />
-      </>
+      </div>
     </ThemeProvider>
   );
 }
